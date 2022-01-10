@@ -6,10 +6,11 @@ You needn't save all available data, but at the very least, save the current tem
 
 The application must provide a REST API to query for aggregated values over the saved data, e.g. getting the max/min/avg temperature of the past 24 hours.
 
+The application must be runnable using Docker. The image needn't be uploaded to a registry, providing a Dockerfile is sufficient. You may also run provide a docker-compose file to start both your application and the database.
+
 ## Technology Choice
 
-The technology choice is up to you, but you must provide instructions on how to run the code.
-Running it from an IDE is not acceptable because production software also isn't run from the IDE.
+The technology choice is up to you. We expect to run only standard Docker(-Compose) commands to run it (e.g. `docker build`, `docker run`, `docker-compose up`).
 
 ## Final Remarks
 
