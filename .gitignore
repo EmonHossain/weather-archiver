@@ -1,8 +1,40 @@
-.idea
-*.iml
-.settings
+HELP.md
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+target/classes/**
+target/maven-archiver/**
+target/maven-status/**
+target/test-classes/**
+target/weather.jar.original
+
+
+
+### STS ###
+.apt_generated
 .classpath
+.factorypath
 .project
-.directory
-.vscode
-.local
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/

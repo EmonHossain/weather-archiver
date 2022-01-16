@@ -1,0 +1,32 @@
+version: "3"
+services:
+
+  mysqldb:
+    image: mysql:8
+    container_name: mysqldb
+    networks:
+      - weather-mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=weather
+
+  weather:
+    build:
+      dockerfile: Dockerfile
+    image: weather
+    container_name: weather
+    ports:
+      - "8080:8080"
+    links:
+      - mysqldb:mysql
+    networks:
+      - weather-mysql
+    depends_on:
+      - mysqldb
+
+networks:
+  weather-mysql:
+    driver: bridge
