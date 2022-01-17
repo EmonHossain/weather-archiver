@@ -10,6 +10,9 @@ import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * Pull and push data into database
+ */
 @Repository
 @Transactional
 public class WeatherRepository {
@@ -22,6 +25,7 @@ public class WeatherRepository {
     @Autowired
     private EntityManager entityManager;
 
+    //Save weather information into weather table
     public void save(WeatherInfo info){
         entityManager.persist(info);
         this.currentRecord = info;
@@ -35,6 +39,7 @@ public class WeatherRepository {
         return getCurrentRecord();
     }
 
+    //pull all record from database
     public List<WeatherInfo> findAll(){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<WeatherInfo> criteria = builder.createQuery( WeatherInfo.class );
@@ -43,34 +48,35 @@ public class WeatherRepository {
         return entityManager.createQuery(criteria).getResultList();
     }
 
-    public int findMaxTemp(){
+    //run aggregate operations to find maximum
+    public int findMaxTempFor(int hour){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Integer> criteria = builder.createQuery( Integer.class );
         Root<WeatherInfo> root = criteria.from(WeatherInfo.class);
 
         criteria.select( builder.max(root.get("temperature")));
-        criteria.where(builder.greaterThanOrEqualTo(root.get("observeTime"),utils.getTimeBeforeHoursFromNowInMillis(24)));
+        criteria.where(builder.greaterThanOrEqualTo(root.get("observeTime"),utils.getTimeBeforeHoursFromNowInMillis(hour)));
         return entityManager.createQuery(criteria).getSingleResult();
     }
 
-    public int findAvgTemp(){
+    public int findAvgTempFor(int hour){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Double> criteria = builder.createQuery( Double.class );
         Root<WeatherInfo> root = criteria.from(WeatherInfo.class);
 
         criteria.select( builder.avg(root.get("temperature")));
-        criteria.where(builder.greaterThanOrEqualTo(root.get("observeTime"),utils.getTimeBeforeHoursFromNowInMillis(24)));
+        criteria.where(builder.greaterThanOrEqualTo(root.get("observeTime"),utils.getTimeBeforeHoursFromNowInMillis(hour)));
         double avg = entityManager.createQuery(criteria).getSingleResult();
         return (int) avg;
     }
 
-    public int findMinTemp(){
+    public int findMinTempFor(int hour){
         CriteriaBuilder builder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Integer> criteria = builder.createQuery( Integer.class );
         Root<WeatherInfo> root = criteria.from(WeatherInfo.class);
 
         criteria.select( builder.min(root.get("temperature")));
-        criteria.where(builder.greaterThanOrEqualTo(root.get("observeTime"),utils.getTimeBeforeHoursFromNowInMillis(24)));
+        criteria.where(builder.greaterThanOrEqualTo(root.get("observeTime"),utils.getTimeBeforeHoursFromNowInMillis(hour)));
         return entityManager.createQuery(criteria).getSingleResult();
     }
 

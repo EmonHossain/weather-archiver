@@ -1,6 +1,5 @@
 version: "3"
 services:
-
   mysqldb:
     image: mysql:8
     container_name: mysqldb
@@ -9,7 +8,6 @@ services:
     ports:
       - "3306:3306"
     environment:
-      - MYSQL_USER=root
       - MYSQL_ROOT_PASSWORD=root
       - MYSQL_DATABASE=weather
 
@@ -18,6 +16,7 @@ services:
       dockerfile: Dockerfile
     image: weather
     container_name: weather
+    restart: on-failure
     ports:
       - "8080:8080"
     links:

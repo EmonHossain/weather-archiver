@@ -1,16 +1,21 @@
 package com.emon.weather;
 
-import com.fasterxml.jackson.annotation.*;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.time.LocalDateTime;
 
+
+/**
+ * java POJO also ORM.
+ * annotated to create database table and column automatically.
+ * avoided boilerplate code. 'Lombok' will generate required methods automatically.
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -21,12 +26,15 @@ public class WeatherInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @JsonIgnore
+    //primary key
     private Long id;
     private int temperature;
     private int feelsLike;
+    //omit this field wile saving data
     @Transient
     @JsonProperty("localObsDateTime")
     private String jsonTime;
+    //does not produce JSON value
     @JsonIgnore
     private long observeTime;
     private String description;
