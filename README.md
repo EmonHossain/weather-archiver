@@ -16,11 +16,16 @@ The technology choice is up to you. We expect to run only standard Docker(-Compo
 
 If in doubt, ask!
 
-#Solution
+
+
+# Solution
+
 Weather Data Archiver is a RESTful web service developed in [java](https://www.java.com) and based on [spring framework](https://www.spring.io).
 In every 30 minutes actual weather data collected from [wttr.in](https://www.wttr.in/) and stored into [mySQL](https://www.mysql.com/) database and provides interested weather information to user in JSON format.
 
-##How to use
+## How to use
+
+
 The service source code can be build and package like simple spring boot project or install as it is using provided docker compose. In either ways you need to clone or download this repository first.
 ### ***Build*** and ***Run*** from source code:
 #### ***Minimum Requirements:***
