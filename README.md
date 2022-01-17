@@ -67,6 +67,7 @@ file. Now enter the `docker-compose up` using your Terminal or CMD, The Docker c
     "temperature": 6,
     "feelsLike": 3,
     "description": "Sunny",
+    "temp_scale": "Celsius",
     "localObsDateTime": "2022-01-14 01:46 PM"
    }
    ```
@@ -78,7 +79,8 @@ file. Now enter the `docker-compose up` using your Terminal or CMD, The Docker c
    * Provide `Minimum` temperature in last 24 hours
    ```
    {
-    "minimum_temp": 2
+    "minimum_temp": "2",
+    "temp_scale": "Celsius"
    }
    ```
 
@@ -86,13 +88,15 @@ file. Now enter the `docker-compose up` using your Terminal or CMD, The Docker c
    * Provide `Average` temperature in last 24 hours
    ```
    {
-    "average_temp": 4
+    "average_temp": "4",
+    "temp_scale": "Celsius"
    }
    ```
 5. `/temp/max`, Method `GET`, Response type `JSON`
    * Provide `Maximum` temperature in last 24 hours
    ```
    {
-    "average_temp": 2
+    "average_temp": "2",
+    "temp_scale": "Celsius"
    }
    ```

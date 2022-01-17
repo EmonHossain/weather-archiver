@@ -95,21 +95,24 @@ public class WeatherReportHandler {
         return CompletableFuture.completedFuture(true);
     }
 
-    public Map<String, Integer> getMinTemperature(){
-        Map<String, Integer> map = new HashMap<>();
-        map.put("minimum_temp",repository.findMinTempFor(24));
+    public Map<String, String> getMinTemperature(){
+        Map<String, String> map = new HashMap<>();
+        map.put("minimum_temp",String.valueOf(repository.findMinTempFor(24)));
+        map.put("temp_scale","Celsius");
         return map;
     }
 
-    public Map<String, Integer> getAvgTemperature(){
-        Map<String, Integer> map = new HashMap<>();
-        map.put("average_temp",repository.findAvgTempFor(24));
+    public Map<String, String> getAvgTemperature(){
+        Map<String, String> map = new HashMap<>();
+        map.put("average_temp",String.valueOf(repository.findAvgTempFor(24)));
+        map.put("temp_scale","Celsius");
         return map;
     }
 
-    public Map<String, Integer> getMaxTemperature(){
-        Map<String, Integer> map = new HashMap<>();
-        map.put("maximum_temp",repository.findMaxTempFor(24));
+    public Map<String, String> getMaxTemperature(){
+        Map<String, String> map = new HashMap<>();
+        map.put("maximum_temp",String.valueOf(repository.findMaxTempFor(24)));
+        map.put("temp_scale","Celsius");
         return map;
     }
 

@@ -26,17 +26,17 @@ public class WeatherController {
     }
 
     @GetMapping("/temp/min")
-    public ResponseEntity<Map<String,Integer>> getMin(){
+    public ResponseEntity<Map<String,String>> getMin(){
         return new ResponseEntity<>(wrh.getMinTemperature(), HttpStatus.OK);
     }
 
     @GetMapping("/temp/avg")
-    public ResponseEntity<Map<String,Integer>> getAvg(){
+    public ResponseEntity<Map<String,String>> getAvg(){
         return new ResponseEntity<>(wrh.getAvgTemperature(), HttpStatus.OK);
     }
 
     @GetMapping("/temp/max")
-    public ResponseEntity<Map<String,Integer>> getMax(){
+    public ResponseEntity<Map<String,String>> getMax(){
         return new ResponseEntity<>(wrh.getMaxTemperature(), HttpStatus.OK);
     }
 

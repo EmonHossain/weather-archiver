@@ -30,7 +30,7 @@ public class WeatherReportHandlerTest {
         //must run before calling dependent service
         when(repository.findMaxTempFor(24)).thenReturn(5);
 
-        Map<String,Integer> map=  weatherReportHandler.getMaxTemperature();
+        Map<String,String> map=  weatherReportHandler.getMaxTemperature();
         assertThat(map).containsKey("maximum_temp");
     }
 
@@ -40,7 +40,7 @@ public class WeatherReportHandlerTest {
         //must run before calling dependent service
         when(repository.findMinTempFor(24)).thenReturn(-2);
 
-        Map<String,Integer> map=  weatherReportHandler.getMinTemperature();
+        Map<String,String> map=  weatherReportHandler.getMinTemperature();
         assertThat(map).containsKey("minimum_temp");
     }
 

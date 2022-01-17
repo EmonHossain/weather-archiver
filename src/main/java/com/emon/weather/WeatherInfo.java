@@ -30,6 +30,9 @@ public class WeatherInfo {
     private Long id;
     private int temperature;
     private int feelsLike;
+    @Transient
+    @JsonProperty("temp_scale")
+    private String scale="Celsius";
     //omit this field wile saving data
     @Transient
     @JsonProperty("localObsDateTime")
@@ -38,6 +41,7 @@ public class WeatherInfo {
     @JsonIgnore
     private long observeTime;
     private String description;
+
 
     public WeatherInfo(int temp, int feels, long time, String desc){
         this.temperature = temp;
